@@ -1,14 +1,19 @@
 import './App.css';
 import { GiReturnArrow as Return } from 'react-icons/gi';
 import {useState, useEffect} from 'react';
+import React from 'react';
 
 function App() {
-  const [openSetPercentage, setOpenSetPercentage] = useState(false);
-  const [percentage, setPercentage] = useState(0);
-  const [people, setPeople] = useState(0);
-  const [total, setTotal] = useState(0);
-  const [bill, setBill] = useState(0);
-  const [tip, setTip] = useState(0)
+  const [openSetPercentage, setOpenSetPercentage] = useState<boolean>(false);
+  const [myobj, setMyObj] = useState({
+    name: 'spiros',
+    age: 30,
+  });
+  const [percentage, setPercentage] = useState<number>(0);
+  const [people, setPeople] = useState<number>(0);
+  const [total, setTotal] = useState<number>(0);
+  const [bill, setBill] = useState<number>(0);
+  const [tip, setTip] = useState<number>(0)
 
   useEffect(() => {
     if(isNaN(people)) {
@@ -33,7 +38,14 @@ function App() {
 
     console.log("percentage",percentage, "bill",bill, "people",people, "tip", tip);
   }, [percentage, bill, people, tip]); 
+  // console.log(myobj.name);
+  //wrong code
+  // setMyObj({...myobj, name: 'kostas'});
 
+  //correct code
+  // if something happens then execute ->
+  // const tempObj = ({...myobj, name: "kostas"});
+  // setMyObj(tempObj);
   return (
     <div className="bg-[#cee7f1] min-h-screen flex flex-col items-center justify-center space-y-5 font-serif">
       <div className='text-[1rem] tracking-[1rem] font-bold text-[#31642a] mb-8'>
@@ -43,6 +55,7 @@ function App() {
       <div className='bg-[#ffffff] lg:h-[40%] w-[50%] rounded-3xl flex lg:flex-row flex-col lg:items-stretch items-center lg:justify-center min-h-[20rem] min-w-[30rem]'>
         {/* First div*/}
         <div className='bg-[#ffffff] w-[45%] text-[#31642a] mt-4'>
+          <p>{myobj.name}</p>
           <form className='text-[#31642a]'>
               <h3 className='font-bold text-xs tracking-[0.08rem] mb-1'>Bill</h3>
               <div className="relative inline-block w-full">
